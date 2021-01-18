@@ -1,0 +1,12 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <mat-form-field appearance="fill">
+            <mat-label>Choose a tags</mat-label>
+            <mat-select (selectionChange)="selectedValue($event)">
+                <mat-option *ngFor="let tag of tags" [value]="tag.id">
+                    {{tag.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>

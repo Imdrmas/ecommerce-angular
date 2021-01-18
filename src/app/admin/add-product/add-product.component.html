@@ -1,0 +1,29 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Add product</h5>
+        <mat-progress-bar mode="buffer" *ngIf="progressBar" ></mat-progress-bar>
+        <form name="category" (ngSubmit)="addProduct()">
+
+            <h4>Add tag to product</h4>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" [(ngModel)]="product.name">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Price</label>
+                <input type="number" class="form-control" name="price" [(ngModel)]="product.price">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Picture Url</label>
+                <input type="text" class="form-control" name="pictureUrl" [(ngModel)]="product.pictureUrl">
+            </div>
+             <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Description</label>
+                <textarea class="form-control" name="description" [(ngModel)]="product.description"></textarea>
+              </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
