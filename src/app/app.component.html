@@ -1,17 +1,18 @@
-
-
 <style>
   body {
     font-family: initial;
     font-size: 16px;
   }
+
   .spacer {
     flex: 1;
   }
-   a {
+
+  a {
     margin-right: 20px;
     color: aliceblue;
   }
+
   .toolbar {
     position: absolute;
     top: 0;
@@ -38,26 +39,31 @@
     opacity: 0.8;
   }
 
+  .fa-shopping-cart {
+    font-size: 50px;
+    margin: 10px;
+  }
 </style>
 
-<!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <img
-    width="40"
-    alt="Angular Logo"
-    src="https://nsa40.casimages.com/img/2021/01/16/210116104915718144.png" [routerLink]="['/dashboard']"/>
+  <i class="fas fa-shopping-cart"></i>
   <span [routerLink]="['/dashboard']">Welcome to your eccommerce</span>
-    <div class="spacer"></div>
-    <a type="button" [routerLink]="['/dashboard']">
-      Home
-   </a>
-    <a type="button" *ngIf="user" [routerLink]="['/profile/', user.id]">
-       Profile
-    </a>
-    <a type="button" (click)="login()" *ngIf="!user">
-      login
-   </a>
+  <button mat-button [matMenuTriggerFor]="menu">Menu <i class="fas fa-caret-down"></i></button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let cat of categories"
+      [routerLink]="['/dsiplay-category/', cat.id]">{{cat.name}}</button>
+  </mat-menu>
+
+  <div class="spacer"></div>
+  <a type="button" [routerLink]="['/dashboard']">
+    Home <i class="fas fa-home"></i>
+  </a>
+  <a type="button" *ngIf="user" [routerLink]="['/profile/', user.id]">
+    Profile <i class="fas fa-user"></i>
+  </a>
+  <a type="button" (click)="login()" *ngIf="!user">
+    login
+  </a>
 </div><br>
 
-  <router-outlet></router-outlet>
-
+<router-outlet></router-outlet>

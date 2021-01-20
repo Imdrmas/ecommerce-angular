@@ -32,12 +32,19 @@ export class TagService {
   addTag(tag: Tag): Observable<Tag> {
     return this.http.post<Tag>(`http://localhost:8080/api/addTag`, tag);
   }
-  
+
   findTagsForProduct(idProduct: number): Observable<Tag[]> {
     return this.http.get<Tag[]>(`http://localhost:8080/api/findTagsForProduct/${idProduct}`);
   }
 
   findAllTags(): Observable<any[]> {
     return this.http.get<any[]>(`http://localhost:8080/api/findAllTags`);
+  }
+  findAllTagByName(name: string): Observable<Tag[]> {
+    return this.http.get<Tag[]>(`http://localhost:8080/api/findAllTagByName/${name}`);
+  }
+
+  findProductsForTag(idTak: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`http://localhost:8080/api/findProductsForTag/${idTak}`);
   }
 }

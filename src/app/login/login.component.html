@@ -1,17 +1,17 @@
 <div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">Login</h5>
-        <form name="user" (ngSubmit)="addUser()">
-            <mat-progress-bar mode="buffer" *ngIf="progressBar" ></mat-progress-bar>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Username</label>
-                <input type="text" class="form-control" name="username" [(ngModel)]="user.username">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password" [(ngModel)]="user.password">
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-    </div>
+  <div class="card-body">
+    <h5 class="card-title">Login</h5>
+    <form name="user">
+      <mat-progress-bar mode="buffer" *ngIf="progressBar"></mat-progress-bar>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <input type="text" class="form-control" name="username" [(ngModel)]="user.username">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="user.password">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="addUser()">Login</button>
+    </form>
+  </div>
 </div>

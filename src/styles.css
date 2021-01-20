@@ -1,31 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~bootstrap/dist/css/bootstrap.min.css';
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-:root {
-    --bs-blue: #0d6efd;
-    --bs-indigo: #6610f2;
-    --bs-purple: #6f42c1;
-    --bs-pink: #d63384;
-    --bs-red: #dc3545;
-    --bs-orange: #fd7e14;
-    --bs-yellow: #ffc107;
-    --bs-green: #198754;
-    --bs-teal: #20c997;
-    --bs-cyan: #0dcaf0;
-    --bs-white: #fff;
-    --bs-gray: #6c757d;
-    --bs-gray-dark: #343a40;
-    --bs-primary: #0d6efd;
-    --bs-secondary: #6c757d;
-    --bs-success: #198754;
-    --bs-info: #0dcaf0;
-    --bs-warning: #ffc107;
-    --bs-danger: #dc3545;
-    --bs-light: #f8f9fa;
-    --bs-dark: #212529;
-    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+html, body { 
+  height: 100%; 
+}
+body { 
+  margin: 0; 
+  background: linear-gradient(to right, #d1d8e0,#D980FA, #c8d6e5, #9980FA, #d1d8e0); 
+  font-family: initial !important; 
+  color: #222f3e
+}
+.title-page{
+  border-bottom: 1px solid;
+  font-family: initial;
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 230px;
+  text-align: center;
+  color: #2c3e50;
+  }
+
+  .container {
+      margin-top: 40px;
+  }
+  .fa-info-circle{
+    color: #4b6584;
+    font-size: 20px;
+    cursor: pointer; 
+    margin-left: 22px;
+}
+#btn{
+     background: #FFF;
+     border: 0;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    background-color: #ffd;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  #price{
+color: #c23616;
+font-weight: bold;
+padding: 10px 20px;
+border: 1px solid antiquewhite;
+font-size: 16px;
+display: inline-block;
+  }
+
+  .fa-eye-slash{
+  font-size: 22px;
+  color: #4b6584;
+  }
+  .btn-primary {
+    font-size: 12px;;
   }

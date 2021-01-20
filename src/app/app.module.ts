@@ -14,6 +14,15 @@ import { AddCategoryComponent } from './admin/add-category/add-category.componen
 import { AddProductComponent } from './admin/add-product/add-product.component';
 import { AddTagComponent } from './admin/add-tag/add-tag.component';
 import { AddTagToProductComponent } from './admin/add-tag-to-product/add-tag-to-product.component';
+import { EcommerceComponent } from './ecommerce/ecommerce.component';
+import { OrdersComponent } from './ecommerce/orders/orders.component';
+import { ProductsComponent } from './ecommerce/products/products.component';
+import { ShoppingCartComponent } from './ecommerce/shopping-cart/shopping-cart.component';
+import { DatePipe } from '@angular/common';
+import { SangleProductComponent } from './ecommerce/sangle-product/sangle-product.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { DisplayCategoryComponent } from './display-category/display-category.component';
+import { DisplayTagComponent } from './display-tag/display-tag.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +34,15 @@ import { AddTagToProductComponent } from './admin/add-tag-to-product/add-tag-to-
     AddCategoryComponent,
     AddProductComponent,
     AddTagComponent,
-    AddTagToProductComponent
+    AddTagToProductComponent,
+    EcommerceComponent,
+    OrdersComponent,
+    ProductsComponent,
+    ShoppingCartComponent,
+    SangleProductComponent,
+    UpdateProfileComponent,
+    DisplayCategoryComponent,
+    DisplayTagComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +52,7 @@ import { AddTagToProductComponent } from './admin/add-tag-to-product/add-tag-to-
     MaterialModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]
 })

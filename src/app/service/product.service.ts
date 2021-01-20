@@ -35,8 +35,8 @@ export class ProductService {
   deleteProductFromTag(idProduct: number, idTag: number): Observable<Product> {
     return this.http.delete<Product>(`http://localhost:8080/api/deleteProductFromTag/${idProduct}/${idTag}`);
   }
-  findByName(name: string): Observable<Product> {
-    return this.http.get<Product>(`http://localhost:8080/api/findByName/${name}`);
+  findByName(name: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`http://localhost:8080/api/findByName/${name}`);
   }
 
 

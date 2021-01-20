@@ -8,7 +8,7 @@ import { Category } from '../modal/Modal';
 })
 export class CategoryService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   addCategoryToUser(category: Category, idUser: number): Observable<Category> {
     return this.http.post<Category>(`http://localhost:8080/api/addCategoryToUser/${idUser}`, category);

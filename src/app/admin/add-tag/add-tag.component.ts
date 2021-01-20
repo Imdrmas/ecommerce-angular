@@ -15,23 +15,23 @@ export class AddTagComponent implements OnInit {
   constructor(private tagService: TagService) { }
 
   ngOnInit(): void {
-    if(this.idTag!=null) {
+    if (this.idTag != null) {
       this.tagService.findTagById(this.idTag).subscribe(tag => {
         this.tag = tag;
       })
     }
   }
- addTag() {
-  if(this.idTag!=null) {
-    this.tagService.editTag(this.tag, this.idTag).subscribe(tag => {
-      this.tag = tag;
-      window.location.reload();
-    })
-  } else {
-    this.tagService.addTag(this.tag).subscribe(tag => {
-      this.tag = tag;
-      window.location.reload();
-    })
+  addTag() {
+    if (this.idTag != null) {
+      this.tagService.editTag(this.tag, this.idTag).subscribe(tag => {
+        this.tag = tag;
+        window.location.reload();
+      })
+    } else {
+      this.tagService.addTag(this.tag).subscribe(tag => {
+        this.tag = tag;
+        window.location.reload();
+      })
+    }
   }
- }
 }

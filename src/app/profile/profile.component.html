@@ -1,33 +1,75 @@
+<div class="row" style="margin-top: 40px;">
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-body" style="background-color: #e15f41; padding: 0px; padding-left: 10px; color: wheat;">
+        <h2 class="card-title">Your Profile {{user.username}}</h2>
+      </div>
+      <ul class="list-group list-group-flush" *ngIf="user.email || user.nameOnCard || user.cardNumber">
+        <li class="list-group-item">{{user.nameOnCard}}</li>
+        <li class="list-group-item">{{user.email}}</li>
+        <li class="list-group-item">{{user.address}}</li>
+      </ul>
+      <div *ngIf="user.admin==true">
+        <ul class="list-group" *ngFor="let cat of categories">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span style="cursor: pointer;" [routerLink]="['/profile/' + user.id + '/categories/', cat.id]"
+              routerLinkActive="router-link-active"> {{cat.name}} </span>
+            <button type="button" class="btn btn-outline-primary btn-sm" (click)="addProduct(cat.id)">Add
+              product</button>
+          </li>
+        </ul>
+      </div>
 
-    <div class="row" style="margin-top: 40px;">
-        <div class="col-lg-3">
-            <div class="card">
-                <div class="card-body" style="background-color: #e15f41; padding: 0px; padding-left: 10px; color: wheat;">
-                  <h2 class="card-title">Your Profile {{user.username}}</h2>
-                </div>
-                <ul class="list-group list-group-flush" *ngIf="user.email || user.nameOnCard || user.cardNumber">
-                  <li class="list-group-item">{{user.nameOnCard}}</li>
-                  <li class="list-group-item">{{user.email}}</li>
-                  <li class="list-group-item">{{user.address}}</li>
-                </ul>
-                <div *ngIf="user.admin==true">    
-                  <ul class="list-group" *ngFor="let cat of categories">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                       <span style="cursor: pointer;" [routerLink]="['/profile/' + user.id + '/categories/', cat.id]" routerLinkActive="router-link-active" > {{cat.name}} </span>
-                       <button type="button" class="btn btn-outline-primary btn-sm" (click)="addProduct(cat.id)">Add product</button>
-                    </li>
-                    </ul>
-               </div>
-            
-                <div class="card-body">
-                  <button type="button" class="btn btn-danger" (click)="logout(user.id)">Logout</button>
-                  <button type="button" class="btn btn-warning" style="margin: 0 10px;">Update</button>
-                  <button type="button" class="btn btn-info" (click)="addCategory(user.id)">Add category</button>
-                  <button type="button" class="btn btn-success" (click)="addTag()" style="margin-left: 10px;">Add tag</button>
-                </div>
-              </div>
-        </div>
-        <div class="col-lg-9">
-            <router-outlet></router-outlet>
-        </div>
+      <div class="card-body">
+        <button type="button" class="btn btn-danger" (click)="logout(user.id)">Logout</button>
+        <button type="button" class="btn btn-warning" style="margin: 0 10px;"
+          (click)="updateProfile(user.id)">Update</button>
+        <button type="button" class="btn btn-info" (click)="addCategory(user.id)" *ngIf="user.admin">Add
+          category</button>
+        <button type="button" class="btn btn-success" (click)="addTag()" style="margin-left: 10px;"
+          *ngIf="user.admin">Add tag</button>
+      </div>
     </div>
+
+  </div>
+  <div class="col-lg-8">
+    <div class="card" *ngIf="cartLength>=1" style="margin-top: 30px;">
+      <div class="card-body">
+        <mat-accordion>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Your product
+              </mat-panel-title>
+              <mat-panel-description>
+                This is a product saved
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Product</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cart of carts">
+                  <th scope="row"><img src="{{cart.pictureUrl}}" class="img-thumbnail" style="width: 100px;"></th>
+                  <td>{{cart.name}}</td>
+                  <td>{{cart.price}}</td>
+                  <td>{{cart.quantity}}</td>
+                  <td><span class="material-icons" (click)="deleteCart(cart.id, user.id)"
+                      style="cursor: pointer; color: #e15f41;">delete_forever</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Update profile</h5>
+    <form name="user" (ngSubmit)="updateUser(user.id)">
+      <mat-progress-bar mode="buffer" *ngIf="progressBar"></mat-progress-bar>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <input type="text" class="form-control" name="username" [(ngModel)]="user.username">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="user.password">
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Card Number</label>
+        <input type="number" class="form-control" name="cardNumber" [(ngModel)]="user.cardNumber">
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Cvv</label>
+        <input type="number" class="form-control" name="cvv" [(ngModel)]="user.cvv">
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Name On Card</label>
+        <input type="text" class="form-control" name="nameOnCard" [(ngModel)]="user.nameOnCard">
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="text" class="form-control" name="email" [(ngModel)]="user.email">
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Address</label>
+        <input type="text" class="form-control" name="address" [(ngModel)]="user.address">
+      </div>
+
+
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+</div>

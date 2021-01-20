@@ -17,15 +17,15 @@ export class AddTagToProductComponent implements OnInit {
   ngOnInit(): void {
     this.tagService.findAllTags().subscribe(tags => {
       this.tags = tags;
-    this.tagService.findTagsForProduct(this.data.idProduct).subscribe(filterTags => {
-      this.filterTags = filterTags;
-      this.filterTags.forEach(t => {
-        this.tags = this.tags.filter(item => item.id !== t.id);
+      this.tagService.findTagsForProduct(this.data.idProduct).subscribe(filterTags => {
+        this.filterTags = filterTags;
+        this.filterTags.forEach(t => {
+          this.tags = this.tags.filter(item => item.id !== t.id);
+        })
       })
     })
-    })
   }
-  
+
   selectedValue(event: any) {
     const idTag = event.value;
     this.tagService.addTagToProduct(this.data.idProduct, idTag).subscribe(() => {

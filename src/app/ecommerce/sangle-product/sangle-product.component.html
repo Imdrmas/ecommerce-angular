@@ -1,0 +1,110 @@
+<div class="container" *ngFor="let order of productOrders let i = index;">
+  <div class="row">
+    <div class="col" [hidden]="orderFinished">
+
+      <div class="pricing-table">
+
+        <div class="pricing-item pricing-featured">
+          <div class='selected'>Recomend</div>
+          <div class="pricing-title">
+            Product
+          </div>
+          <div class="pricing-value">R${{order.product.price}}.<span class="smallText">90</span>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="keywords">Name</span> {{order.product.name}}</li>
+            <li>Description <br>
+              <span>
+                {{order.product.description}}
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi hic fugit inventore saepe
+                optio quidem sunt, molestiae voluptate doloribus accusantium corporis quisquam veritatis
+                tempora, similique consequuntur distinctio dicta error esse?
+              </span>
+            </li>
+          </ul>
+
+          <div class="button" *ngIf="user">
+            <div *ngIf="!isProductSelected(order.product)">
+              <button id="addToCartBtn" class="btn-block" (click)="addToCart(order,  user.id)">Add To Cart
+              </button>
+            </div>
+            <div *ngIf="isProductSelected(order.product)">
+              <button class="btn btn-danger btn-block active" (click)="removeFromCart(order,  user.id)">Remove From Cart
+              </button>
+            </div>
+          </div>
+
+          <div *ngIf="!user">
+            <p><strong>Please login to buy product</strong> <button type="button" class="btn btn-link"
+                (click)="login()">Login</button> </p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="col" [hidden]="orderFinished">
+      <img class="card-img-top img-thumbnail" style="width: 100%; height: 570px" src={{order.product.pictureUrl}}
+        alt="image">
+      <div *ngIf="!isProductSelected(order.product)">
+        <input type="hidden" tabindex="0" min="1" max="1" class="form-control" [(ngModel)]="order.quantity" />
+      </div>
+
+      <ul class="list-group list-group-horizontal-sm">
+        <li class="list-group-item" *ngFor="let tag of tags"
+          style="margin-left: 5px; margin-left: 5px; margin-top: 10px; padding: 5px 10px;">
+          <a [routerLink]="['/display-tag/', tag.id]" style="cursor: pointer; color: blue;">{{tag.name}}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col" style="padding-right: 34px;">
+      <div style="margin-top: 5px;">
+        <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC [hidden]="orderFinished">
+        </app-shopping-cart>
+      </div>
+
+      <div>
+        <app-orders #ordersC [hidden]="!orderFinished"></app-orders>
+      </div>
+    </div>
+    <hr style="border: 1px solid #ddd;">
+  </div>
+</div>
+
+<div class="container" style="margin-bottom: 50px;" [hidden]="orderFinished">
+  <div class="info-comment">
+    <p><strong>Comments </strong> </p>
+  </div>
+
+  <div class="card col-md-8" *ngIf="user">
+    <div class="card-body">
+      <form>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Title" name="title" [(ngModel)]="comment.title">
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" rows="3" placeholder="Message" name="message"
+            [(ngModel)]="comment.message"></textarea>
+        </div>
+        <a (click)="addComment(idProduct, user.username)" class="btn btn-primary">Add comment</a>
+      </form>
+    </div>
+  </div>
+
+  <div class="card col-md-8" *ngIf="!user">
+    <div class="card-body">
+      <div class="info-comment">
+        <p><strong>Please login to add Comment </strong> <button type="button" class="btn btn-link"
+            (click)="login()">Login</button> </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-comment" *ngFor="let item of comments">
+    <img src="https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-user-vector-avatar-png-image_1541962.jpg"
+      alt="Avatar" style="width:90px">
+    <p><span>{{item.addedBy}}</span> {{item.addedAt | date}}</p>
+    <p><strong>{{item.title}}: </strong> {{item.message}}</p>
+  </div>
+
+</div>

@@ -1,4 +1,4 @@
-import { Product, Tag } from './../../modal/Modal';
+import { Product } from './../../modal/Modal';
 import { Component, Inject, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/service/product.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -15,25 +15,25 @@ export class AddProductComponent implements OnInit {
   constructor(private productService: ProductService, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-      if(this.data.idProduct!=null) {
-        this.productService.findProductById(this.data.idProduct).subscribe(product => {
-          this.product = product;
-        })
-      }
+    if (this.data.idProduct != null) {
+      this.productService.findProductById(this.data.idProduct).subscribe(product => {
+        this.product = product;
+      })
+    }
   }
 
   addProduct() {
-   this.progressBar = true;
-   if(this.data.idProduct!=null) {
-       this.productService.editProduct(this.product, this.data.idProduct).subscribe(product => {
-         this.product = product;
-         window.location.reload();
-       });
-   } else {
-    this.productService.addProductToCategory(this.product, this.data.idCategory).subscribe(product => {
-      this.product = product;
-      window.location.reload();
-    });
-   }
+    this.progressBar = true;
+    if (this.data.idProduct != null) {
+      this.productService.editProduct(this.product, this.data.idProduct).subscribe(product => {
+        this.product = product;
+        window.location.reload();
+      });
+    } else {
+      this.productService.addProductToCategory(this.product, this.data.idCategory).subscribe(product => {
+        this.product = product;
+        window.location.reload();
+      });
+    }
   }
 }

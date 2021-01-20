@@ -1,0 +1,49 @@
+<div class="row card-deck">
+  <div class="col-lg-4 col-md-6 mb-4" *ngFor="let order of productOrders; let i = index">
+    <div class="card text-center">
+      <div class="card-header" style="background-color: #bdc3c7">
+        <h4>{{ order.product.name }}</h4>
+      </div>
+
+      <div class="card-body">
+        <a (click)="sngleProduct(order.product.id)"><img class="card-img-top img-thumbnail"
+            style="width: 230px; height: 300px; cursor: pointer" src="{{ order.product.pictureUrl }}" alt="image" /></a>
+        <h5 class="card-title" id="price">
+          Price = {{ order.product.price }}<i class="fas fa-dollar-sign"></i>
+          <button title="Information" id="btn" (click)="showUndoBtn(i)" (click)="productInfo(order.product.id)">
+            <i class="fas fa-info-circle"></i>
+          </button>
+          <button title="View" id="btn" (click)="sngleProduct(order.product.id)">
+            <i class="fas fa-eye-slash"></i>
+          </button>
+        </h5>
+        <div class="modal" [attr.id]="'undoBtn' + i" *ngIf="showBtn === i && showMyContainerInfo" class="editBtn"
+          md-raised-button color="primary">
+          <div class="modal-content">
+            <span>{{ description }}</span>
+          </div>
+        </div>
+        <hr style="margin-top: 0px !important; margin-bottom: 10px !important" />
+        <div class="row" *ngIf="user">
+          <div class="col-5 padding-0" *ngIf="!isProductSelected(order.product)" style="margin-left: 15px">
+            <input type="number" min="0" max="10" class="form-control" [(ngModel)]="order.quantity" />
+          </div>
+          <div class="col-5 padding-0" *ngIf="!isProductSelected(order.product)">
+            <button class="btn btn-primary" (click)="addToCart(order)" [disabled]="order.quantity <= 0">
+              Puy Now
+            </button>
+          </div>
+          <div class="col-12" *ngIf="isProductSelected(order.product)">
+            <button class="btn btn-danger btn-block active" (click)="removeFromCart(order)">
+              Remove From Cart
+            </button>
+          </div>
+        </div>
+        <div *ngIf="!user">
+              <p><strong>Please login to buy product</strong> <button type="button" class="btn btn-link"
+                  (click)="login()">Login</button> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
